@@ -9,7 +9,6 @@ using TesteDeliverIT.BLL.Interfaces;
 
 namespace TesteDeliverIT.Api.Controllers
 {
-    [ApiController]
     public class ContaController : ControllerBase
     {
         private readonly IContaBLL _contaBLL;
@@ -26,9 +25,9 @@ namespace TesteDeliverIT.Api.Controllers
         }
         [HttpPost]
         [Route("[controller]/Post")]
-        public void Post(ContaDTO conta)
+        public ContaDTO Post([FromBody]ContaDTO conta)
         {
-            _contaBLL.Post(conta);
+            return _contaBLL.Post(conta);
         }
     }
 }

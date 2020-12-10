@@ -5,9 +5,8 @@ using TesteDeliverIT.DTO;
 
 namespace TesteDeliverIT.DAL.DAO.Interfaces
 {
-    public interface IContaDAO
+    public interface IContaAtrasoDAO
     {
-        List<ContaDTO> Get();
-        ContaDTO Post(ContaDTO model);
+        ContaAtrasoDTO Get(int qtdDiasAtraso);
     }
 }

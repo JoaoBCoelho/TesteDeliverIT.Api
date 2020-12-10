@@ -22,10 +22,12 @@ namespace TesteDeliverIT.DAL.DAO
             return _dbContext.Conta.ToList();
         }
 
-        public void Post(ContaDTO model)
+        public ContaDTO Post(ContaDTO model)
         {
             _dbContext.Conta.Add(model);
             _dbContext.SaveChanges();
+
+            return model;
         }
     }
 }

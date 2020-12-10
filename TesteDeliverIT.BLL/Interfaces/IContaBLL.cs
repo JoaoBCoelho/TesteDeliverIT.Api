@@ -8,6 +8,6 @@ namespace TesteDeliverIT.BLL.Interfaces
     public interface IContaBLL
     {
         List<ContaDTO> Get();
-        void Post(ContaDTO conta);
+        ContaDTO Post(ContaDTO conta);
     }
 }

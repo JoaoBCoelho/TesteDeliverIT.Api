@@ -10,9 +10,11 @@ namespace TesteDeliverIT.BLL
     public class ContaBLL : IContaBLL
     {
         private readonly IContaDAO _contaDAO;
-        public ContaBLL(IContaDAO contaDAO)
+        private readonly IContaAtrasoDAO _contaAtrasoDAO;
+        public ContaBLL(IContaDAO contaDAO, IContaAtrasoDAO contaAtrasoDAO)
         {
             _contaDAO = contaDAO;
+            _contaAtrasoDAO = contaAtrasoDAO;
         }
 
         public List<ContaDTO> Get()
@@ -20,9 +22,34 @@ namespace TesteDeliverIT.BLL
             return _contaDAO.Get();
         }
 
-        public void Post(ContaDTO conta)
+        public ContaDTO Post(ContaDTO conta)
         {
-            _contaDAO.Post(conta);
+            CalcularValoresAtraso(conta);
+
+            return _contaDAO.Post(conta);
+        }
+
+        private void CalcularValoresAtraso(ContaDTO conta)
+        {
+
+            if (conta.DataPagamento <= conta.DataVencimento)
+            {
+                conta.QtdDiasAtraso = 0;
+                conta.ValorCorrigido = conta.ValorOriginal;
+                return;
+            }
+
+            conta.QtdDiasAtraso = (conta.DataPagamento - conta.DataVencimento).Days;
+            var atraso = _contaAtrasoDAO.Get(conta.QtdDiasAtraso);
+
+            if (atraso == null)
+            {
+                conta.ValorCorrigido = conta.ValorOriginal;
+                return;
+            }
+
+            var valorComMulta = conta.ValorOriginal + (conta.ValorOriginal * (atraso.PorcentagemMulta / 100));
+            conta.ValorCorrigido = valorComMulta + (conta.ValorOriginal * (conta.QtdDiasAtraso * (atraso.JurosPorDia / 100)));
         }
     }
 }
