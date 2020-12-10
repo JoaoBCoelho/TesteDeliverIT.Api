@@ -3,16 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteDeliverIT.Api", "TesteDeliverIT.Api\TesteDeliverIT.Api.csproj", "{BCCA4C45-3B69-4CFE-B456-CD43139D3446}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteDeliverIT.Api", "TesteDeliverIT.Api\TesteDeliverIT.Api.csproj", "{BCCA4C45-3B69-4CFE-B456-CD43139D3446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteDeliverIT.BLL", "TesteDeliverIT.BLL\TesteDeliverIT.BLL.csproj", "{B2F042E2-5DC5-4EFF-BE42-B11766C39C51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteDeliverIT.BLL", "TesteDeliverIT.BLL\TesteDeliverIT.BLL.csproj", "{B2F042E2-5DC5-4EFF-BE42-B11766C39C51}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A1D2CF41-E71C-4BBC-82CE-05E6888B20C2} = {A1D2CF41-E71C-4BBC-82CE-05E6888B20C2}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteDeliverIT.DAL", "TesteDeliverIt.DAL\TesteDeliverIT.DAL.csproj", "{A1D2CF41-E71C-4BBC-82CE-05E6888B20C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteDeliverIT.DAL", "TesteDeliverIt.DAL\TesteDeliverIT.DAL.csproj", "{A1D2CF41-E71C-4BBC-82CE-05E6888B20C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteDeliverIT.DTO", "TesteDeliverIT.DTO\TesteDeliverIT.DTO.csproj", "{2C20DD09-8DD9-45BB-B9AD-081C5A467FDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesteDeliverIT.DTO", "TesteDeliverIT.DTO\TesteDeliverIT.DTO.csproj", "{2C20DD09-8DD9-45BB-B9AD-081C5A467FDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliverITTests", "DeliverITTests\DeliverITTests.csproj", "{5430D9DD-11F4-4BB1-8118-D6716E0E2204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{2C20DD09-8DD9-45BB-B9AD-081C5A467FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C20DD09-8DD9-45BB-B9AD-081C5A467FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C20DD09-8DD9-45BB-B9AD-081C5A467FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5430D9DD-11F4-4BB1-8118-D6716E0E2204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5430D9DD-11F4-4BB1-8118-D6716E0E2204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5430D9DD-11F4-4BB1-8118-D6716E0E2204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5430D9DD-11F4-4BB1-8118-D6716E0E2204}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
