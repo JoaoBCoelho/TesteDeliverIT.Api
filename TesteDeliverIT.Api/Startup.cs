@@ -32,6 +32,12 @@ namespace TesteDeliverIT.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
             services.AddScoped<IContaBLL, ContaBLL>();
             services.AddScoped<IContaDAO, ContaDAO>();
@@ -48,6 +54,8 @@ namespace TesteDeliverIT.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("MyPolicy");
 
             app.UseHttpsRedirection();
 

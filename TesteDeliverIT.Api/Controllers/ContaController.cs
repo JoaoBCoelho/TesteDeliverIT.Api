@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TesteDeliverIT.DTO;
 using Microsoft.Extensions.Logging;
 using TesteDeliverIT.BLL.Interfaces;
+using Microsoft.AspNetCore.Cors;
 
 namespace TesteDeliverIT.Api.Controllers
 {
