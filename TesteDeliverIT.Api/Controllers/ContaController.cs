@@ -23,9 +23,10 @@ namespace TesteDeliverIT.Api.Controllers
         {
             return _contaBLL.Get();
         }
+
         [HttpPost]
         [Route("[controller]/Post")]
-        public ContaDTO Post([FromBody]ContaDTO conta)
+        public ContaDTO Post([FromBody] ContaDTO conta)
         {
             return _contaBLL.Post(conta);
         }
