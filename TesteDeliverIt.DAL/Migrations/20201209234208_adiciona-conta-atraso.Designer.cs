@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TesteDeliverIT.DAL.Models;
@@ -9,9 +10,10 @@ using TesteDeliverIT.DAL.Models;
 namespace TesteDeliverIT.DAL.Migrations
 {
     [DbContext(typeof(DeliverContext))]
-    partial class TesteContextModelSnapshot : ModelSnapshot
+    [Migration("20201209234208_adiciona-conta-atraso")]
+    partial class adicionacontaatraso
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -11,6 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TesteDeliverIT.BLL;
+using TesteDeliverIT.BLL.Interfaces;
+using TesteDeliverIT.DAL.DAO;
+using TesteDeliverIT.DAL.DAO.Interfaces;
 using TesteDeliverIT.DAL.Models;
 
 namespace TesteDeliverIT.Api
@@ -28,6 +32,17 @@ namespace TesteDeliverIT.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
+            services.AddScoped<IContaBLL, ContaBLL>();
+            services.AddScoped<IContaDAO, ContaDAO>();
+            services.AddScoped<IContaAtrasoDAO, ContaAtrasoDAO>();
+
             services.AddDbContext<DeliverContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -39,6 +54,8 @@ namespace TesteDeliverIT.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("MyPolicy");
 
             app.UseHttpsRedirection();
 

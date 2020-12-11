@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using TesteDeliverIT.DTO;
 using Microsoft.Extensions.Logging;
 using TesteDeliverIT.BLL.Interfaces;
+using Microsoft.AspNetCore.Cors;
 
 namespace TesteDeliverIT.Api.Controllers
 {
-    [ApiController]
     public class ContaController : ControllerBase
     {
         private readonly IContaBLL _contaBLL;
@@ -20,15 +20,16 @@ namespace TesteDeliverIT.Api.Controllers
 
         [HttpGet]
         [Route("[controller]/Get")]
-        public IEnumerable<ContaDTO> Get()
+        public async Task<IEnumerable<ContaDTO>> Get()
         {
-            return _contaBLL.Get();
+            return await _contaBLL.GetAsync();
         }
+
         [HttpPost]
         [Route("[controller]/Post")]
-        public void Post(ContaDTO conta)
+        public async Task<ContaDTO> Post([FromBody] ContaDTO conta)
         {
-            _contaBLL.Post(conta);
+            return await _contaBLL.PostAsync(conta);
         }
     }
 }
