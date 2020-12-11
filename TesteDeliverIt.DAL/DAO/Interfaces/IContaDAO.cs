@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using TesteDeliverIT.DTO;
 
 namespace TesteDeliverIT.DAL.DAO.Interfaces
 {
     public interface IContaDAO
     {
-        List<ContaDTO> Get();
-        ContaDTO Post(ContaDTO model);
+        Task<List<ContaDTO>> GetAsync();
+        Task<ContaDTO> PostAsync(ContaDTO model);
     }
 }

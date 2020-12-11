@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TesteDeliverIT.BLL.Interfaces;
 using TesteDeliverIT.DAL.DAO;
 using TesteDeliverIT.DAL.DAO.Interfaces;
@@ -17,16 +18,16 @@ namespace TesteDeliverIT.BLL
             _contaAtrasoDAO = contaAtrasoDAO;
         }
 
-        public List<ContaDTO> Get()
+        public async Task<List<ContaDTO>> GetAsync()
         {
-            return _contaDAO.Get();
+            return await _contaDAO.GetAsync();
         }
 
-        public ContaDTO Post(ContaDTO conta)
+        public async Task<ContaDTO> PostAsync(ContaDTO conta)
         {
             CalcularValoresAtraso(conta);
 
-            return _contaDAO.Post(conta);
+            return await _contaDAO.PostAsync(conta);
         }
 
         private void CalcularValoresAtraso(ContaDTO conta)

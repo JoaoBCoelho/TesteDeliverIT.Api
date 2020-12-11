@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using TesteDeliverIT.DAL.DAO.Interfaces;
 using TesteDeliverIT.DAL.Models;
 using TesteDeliverIT.DTO;
@@ -17,15 +19,15 @@ namespace TesteDeliverIT.DAL.DAO
             _dbContext = dbContext;
         }
 
-        public List<ContaDTO> Get()
+        public async Task<List<ContaDTO>> GetAsync()
         {
-            return _dbContext.Conta.ToList();
+            return await _dbContext.Conta.ToListAsync();
         }
 
-        public ContaDTO Post(ContaDTO model)
+        public async Task<ContaDTO> PostAsync(ContaDTO model)
         {
-            _dbContext.Conta.Add(model);
-            _dbContext.SaveChanges();
+            await _dbContext.Conta.AddAsync(model);
+            await _dbContext.SaveChangesAsync();
 
             return model;
         }

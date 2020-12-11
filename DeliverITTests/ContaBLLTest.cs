@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using TesteDeliverIT.BLL.Interfaces;
 using TesteDeliverIT.DTO;
 using Xunit;
@@ -14,14 +15,14 @@ namespace DeliverITTests
         }
 
         [Fact]
-        public void Listagem_DeveObterValores()
+        public async Task Listagem_DeveObterValores()
         {
-            var contas = _contaBLL.Get();
+            var contas = await _contaBLL.GetAsync();
             Assert.True(contas.Count > 0);
         }
 
         [Fact]
-        public void Insercao_DeveAplicarJurosCorretamente()
+        public async Task Insercao_DeveAplicarJurosCorretamente()
         {
             var conta = new ContaDTO()
             {
@@ -31,7 +32,7 @@ namespace DeliverITTests
                 ValorOriginal = 100.0m
             };
 
-            _contaBLL.Post(conta);
+            await _contaBLL.PostAsync(conta);
 
             Assert.True(conta.QtdDiasAtraso == 10 && conta.ValorCorrigido == 102m && conta.Id != Guid.Empty);
         }
