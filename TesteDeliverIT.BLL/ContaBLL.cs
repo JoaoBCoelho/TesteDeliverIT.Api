@@ -31,7 +31,6 @@ namespace TesteDeliverIT.BLL
 
         private void CalcularValoresAtraso(ContaDTO conta)
         {
-
             if (conta.DataPagamento <= conta.DataVencimento)
             {
                 conta.QtdDiasAtraso = 0;
@@ -49,7 +48,7 @@ namespace TesteDeliverIT.BLL
             }
 
             var valorComMulta = conta.ValorOriginal + (conta.ValorOriginal * (atraso.PorcentagemMulta / 100));
-            conta.ValorCorrigido = valorComMulta + (conta.ValorOriginal * (conta.QtdDiasAtraso * (atraso.JurosPorDia / 100)));
+            conta.ValorCorrigido = Math.Round(valorComMulta + (conta.ValorOriginal * (conta.QtdDiasAtraso * (atraso.JurosPorDia / 100))), 2);
         }
     }
 }
